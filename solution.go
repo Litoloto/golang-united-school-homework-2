@@ -7,6 +7,27 @@ package square
 // CalcSquare(10.0, SidesTriangle)
 // CalcSquare(10.0, SidesSquare)
 // CalcSquare(10.0, SidesCircle)
+import (
+	"math"
+)
 
-func CalcSquare(sideLen float64, sidesNum #yourTypeNameHere#) float64 {
+type mayType int
+
+const SidesTriangle mayType = 3
+const SidesSquare mayType = 4
+const SidesCircle mayType = 0
+
+func CalcSquare(sideLen float64, sidesNum mayType) float64 {
+	var result float64
+	switch sidesNum {
+	case SidesCircle:
+		result = math.Pi * math.Pow(sideLen, 2)
+	case SidesTriangle:
+		result = ((math.Sqrt(3)) / 4) * math.Pow(sideLen, 2)
+	case SidesSquare:
+		result = math.Pow(sideLen, 2)
+	default:
+		result = 0.0
+	}
+	return result
 }
